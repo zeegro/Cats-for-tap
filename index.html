@@ -3,24 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Котики</title>
+    <title>Cats for tap!</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Котики</h1>
-    </header>
-    <main>
-        <section id="button-section">
-            <button id="show-cat-button">Показать котика</button>
-        </section>
-        <section id="collection-section">
-            <h2>Моя коллекция</h2>
-            <div id="cat-collection">
-                <!-- Здесь будут отображаться изображения котиков из коллекции -->
-            </div>
-        </section>
-    </main>
+    <!-- Закрепленная серая полоска с кнопками -->
+    <div id="top-bar">
+        <div id="nav-buttons">
+            <button id="cats-button">Cats for tap!</button>
+            <button id="collection-button">My collection</button>
+        </div>
+    </div>
+
+    <!-- Секция "Cats for tap!" -->
+    <section id="section-cats" class="section">
+        <h1>Cats for tap!</h1>
+        <!-- Здесь может быть содержимое секции "Cats for tap!" -->
+    </section>
+
+    <!-- Секция "My collection" -->
+    <section id="section-collection" class="section">
+        <h1>My collection</h1>
+        <!-- Здесь может быть содержимое секции "My collection" -->
+    </section>
+
     <script src="script.js"></script>
 </body>
 </html>
