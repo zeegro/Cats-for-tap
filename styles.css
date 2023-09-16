@@ -4,6 +4,8 @@ body {
     margin: 0;
     overflow-x: hidden;
     background-color: beige; /* Бежевый фон */
+    /* Убираем линейный градиент */
+    position: relative; /* Добавляем позицию относительно body */
 }
 
 /* Стили для закрепленной серой полоски в верхней части сайта */
@@ -32,6 +34,7 @@ body {
     border: none;
     color: #fff;
     font-size: 16px;
+    font-family: 'Montserrat', sans-serif; /* Используем Montserrat для текста */
     cursor: pointer;
     outline: none;
     padding: 5px 10px;
@@ -42,27 +45,41 @@ body {
     background-color: #333; /* Темно-серый цвет при наведении */
 }
 
-/* Стили для секции "Cats for tap!" */
-#section-cats {
-    background-color: beige; /* Бежевый цвет фона */
+/* Стили для секций */
+.section {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 24px;
-}
-
-/* Стили для секции "My collection" */
-#section-collection {
-    background-color: beige; /* Бежевый цвет фона */
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
+    background-color: transparent; /* Прозрачный фон секций */
+    position: relative; /* Добавляем позицию относительно секций */
 }
 
 /* Стили для скрытия скроллбара */
 body::-webkit-scrollbar {
     width: 0px;
+}
+
+/* Стили для картинок лапок */
+.cat-paw {
+    position: absolute;
+    width: 60px; /* Размер лапки */
+    height: 60px;
+    background-image: url('image/paw.png'); /* Путь к вашей картинке лапки */
+    background-size: cover;
+    animation: fadePaw 10s ease-in-out infinite; /* Увеличим время анимации */
+    opacity: 0; /* Начальная прозрачность лапок */
+    z-index: -1; /* Установим слой ниже контента */
+}
+
+
+/* Анимация для плавного появления и исчезания лапок */
+@keyframes fadePaw {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
 }
