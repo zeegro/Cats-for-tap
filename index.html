@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Модальное окно для предупреждения -->
+    <!-- Предупреждение -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <p>Вы любите котиков?</p>
@@ -18,7 +18,8 @@
             <button id="modal-no-button">Нет</button>
         </div>
     </div>
-    <!-- Навигационный бар -->
+	
+    <!-- Навигация -->
     <div id="top-bar">
         <div id="nav-buttons">
             <button id="cats-button">Cats for tap!</button>
@@ -29,15 +30,15 @@
     <!-- Секция "Cats for tap!" -->
     <section id="section-cats" class="section">
         <h1>Cats for tap!</h1>
-        <!-- Кнопка для загрузки случайной картинки котика -->
         <button id="random-cat-btn">Найти котика</button>
-        <!-- Место для отображения картинки -->
         <div id="random-cat-container"></div>
     </section>
 
     <!-- Секция "My collection" -->
     <section id="section-collection" class="section">
         <h1>My collection</h1>
+        <!-- Контейнер для изображений коллекции -->
+        <div id="collection-container"></div> <!-- Добавлено место под изображения -->
     </section>
 
     <script src="script.js"></script>
