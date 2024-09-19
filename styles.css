@@ -1,53 +1,100 @@
-/* Стили для всего body */
-body {
-    font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    overflow-x: hidden;
-    background-color: beige; /* Бежевый фон */
-    position: relative;
-}
-
-/* Скрываем скроллбар */
-body::-webkit-scrollbar {
-    width: 0;
-}
-
-html, body {
-    height: 100%; /* Высота страницы 100% */
-}
-
-/* Контейнер для лапок */
-#paws-container {
+/* Предупреждение */
+.modal {
+    display: none;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Лапки будут под контентом */
-    pointer-events: none; /* Лапки не будут мешать кликам по другим элементам */
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 3;
+}
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+.modal button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+}
+.modal button:hover {
+    background-color: #555;
 }
 
-/* Стили для закрепленной серой полоски в верхней части сайта */
+/* Лапки */
+	.cat-paw {
+		position: absolute;
+		width: 60px;
+		height: 60px;
+		background-image: url('image/paw.png');
+		background-size: cover;
+		animation: fadePaw 1s ease-in-out infinite;
+		opacity: 0;
+		transform-origin: center;
+	}
+	@keyframes fadePaw {
+		0%, 100% {
+			opacity: 0;
+		}
+		50% {
+			opacity: 1;
+		}
+	}
+	#paws-container {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: -1;
+		pointer-events: none;
+	}
+
+/* Весь body */
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    overflow-x: hidden;
+    background-color: beige;
+    position: relative;
+}
+
+/* Убирает скроллбар */
+body::-webkit-scrollbar {
+    width: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+/* Навигация */
 #top-bar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    background-color: #666; /* Серый цвет */
-    color: #fff; /* Белый цвет текста */
+    background-color: #666;
+    color: #fff;
     z-index: 2;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-/* Стили для кнопок перемещения между секциями */
 #nav-buttons {
     display: flex;
     justify-content: space-around;
     width: 200px;
 }
-
 #nav-buttons button {
     background-color: transparent;
     border: none;
@@ -59,12 +106,11 @@ html, body {
     padding: 5px 10px;
     transition: background-color 0.3s ease-in-out;
 }
-
 #nav-buttons button:hover {
     background-color: #333;
 }
 
-/* Стили для секции "Cats for tap!" */
+/* Секция "Cats for tap!" */
 #section-cats {
     height: 100vh;
     display: flex;
@@ -74,9 +120,9 @@ html, body {
     font-size: 24px;
     position: relative;
     text-align: center;
-    z-index: 1; /* Контент над лапками */
+    z-index: 1;
 }
-
+/*Кнопка вызова API*/
 #random-cat-btn {
     margin-top: 20px;
     padding: 10px 20px;
@@ -87,17 +133,15 @@ html, body {
     font-size: 18px;
     transition: background-color 0.3s ease-in-out;
 }
-
 #random-cat-btn:hover {
     background-color: #333;
 }
-
 #random-cat-container img {
     max-width: 50%;
     margin-top: 20px;
 }
 
-/* Стили для секции "My collection" */
+/* Секция "My collection" */
 #section-collection {
     height: 100vh;
     display: flex;
@@ -107,61 +151,4 @@ html, body {
     position: relative;
     z-index: 1;
     text-align: center;
-}
-
-/* Лапки */
-.cat-paw {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    background-image: url('image/paw.png'); /* Путь к картинке лапки */
-    background-size: cover;
-    animation: fadePaw 1s ease-in-out infinite; /* Плавное появление */
-    opacity: 0; /* Начальная прозрачность */
-    transform-origin: center; /* Центр для поворота */
-}
-
-/* Анимация для плавного появления и исчезания лапок */
-@keyframes fadePaw {
-    0%, 100% {
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-}
-
-/* Стили для модального окна */
-.modal {
-    display: none;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Затемнение фона */
-    z-index: 3;
-}
-
-.modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.modal button {
-    background-color: #333;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin: 10px;
-}
-
-.modal button:hover {
-    background-color: #555;
 }
