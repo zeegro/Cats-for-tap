@@ -4,31 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cats for tap!</title>
+    <link rel="shortcut icon" href="image/logo.png">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Закрепленная серая полоска с кнопками -->
-    <div id="top-bar">
-        <div id="nav-buttons">
-            <button id="cats-button">Cats for tap!</button>
-            <button id="collection-button">My collection</button>
-        </div>
-    </div>
-
-    <!-- Секция "Cats for tap!" -->
-	<section id="section-cats" class="section">
-		<h1>Cats for tap!</h1>
-		<div id="cat-paws-cats"></div> <!-- Контейнер для картинок лапок -->
-	</section>
-
-    <!-- Секция "My collection" -->
-	<section id="section-collection" class="section">
-		<h1>My collection</h1>
-		<div id="cat-paws-collection"></div> <!-- Контейнер для картинок лапок -->
-	</section>
-
     <!-- Модальное окно для предупреждения -->
     <div id="modal" class="modal">
         <div class="modal-content">
@@ -37,6 +18,27 @@
             <button id="modal-no-button">Нет</button>
         </div>
     </div>
+    <!-- Навигационный бар -->
+    <div id="top-bar">
+        <div id="nav-buttons">
+            <button id="cats-button">Cats for tap!</button>
+            <button id="collection-button">My collection</button>
+        </div>
+    </div>
+
+    <!-- Секция "Cats for tap!" -->
+    <section id="section-cats" class="section">
+        <h1>Cats for tap!</h1>
+        <!-- Кнопка для загрузки случайной картинки котика -->
+        <button id="random-cat-btn">Найти котика</button>
+        <!-- Место для отображения картинки -->
+        <div id="random-cat-container"></div>
+    </section>
+
+    <!-- Секция "My collection" -->
+    <section id="section-collection" class="section">
+        <h1>My collection</h1>
+    </section>
 
     <script src="script.js"></script>
 </body>

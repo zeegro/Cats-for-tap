@@ -1,8 +1,14 @@
+const accessKey = 'keloJAFHG1UCuNkWCQ8lfrn9MS2kdzWQUtbbVdXBSJY'; // Твой ключ API Unsplash
+
 // Получаем ссылки на кнопки и секции
 const catsButton = document.getElementById("cats-button");
 const collectionButton = document.getElementById("collection-button");
 const sectionCats = document.getElementById("section-cats");
 const sectionCollection = document.getElementById("section-collection");
+const randomCatContainer = document.getElementById('random-cat-container');
+const pawsContainer = document.createElement('div');
+pawsContainer.id = 'paws-container';
+document.body.appendChild(pawsContainer); // Добавляем контейнер для лапок в body
 
 // Получаем ссылки на модальное окно и кнопки в нем
 const modal = document.getElementById("modal");
@@ -41,39 +47,59 @@ collectionButton.addEventListener("click", () => {
     sectionCollection.scrollIntoView({ behavior: "smooth" });
 });
 
-// Функция для создания и добавления картинок лапок с задержкой
-function createPaws(containerId) {
-    const container = document.getElementById(containerId);
-    const pawSize = 60; // Размер лапки
+// Обработчики событий для кнопок
+catsButton.addEventListener("click", () => {
+    sectionCats.scrollIntoView({ behavior: "smooth" });
+});
 
-    // Генерируем случайное количество лапок (от 5 до 10)
-    const pawCount = Math.floor(Math.random() * 6) + 10;
+collectionButton.addEventListener("click", () => {
+    sectionCollection.scrollIntoView({ behavior: "smooth" });
+});
 
-    for (let i = 0; i < pawCount; i++) {
-        const paw = document.createElement('div');
-        paw.className = 'cat-paw';
-
-        // Генерируем случайные начальные координаты равномерно по экрану
-        const x = Math.random() * (window.innerWidth - pawSize);
-        const y = Math.random() * (window.innerHeight - pawSize);
-
-        // Генерируем случайный угол поворота
-        const rotation = Math.random() * 360;
-
-        // Устанавливаем начальную позицию и поворот
-        paw.style.left = `${x}px`;
-        paw.style.top = `${y}px`;
-        paw.style.transform = `rotate(${rotation}deg)`;
-
-        // Генерируем случайную задержку перед появлением лапки (от 0 до 10 секунд)
-        const delay = Math.random() * 10000;
-
-        setTimeout(() => {
-            container.appendChild(paw);
-        }, delay);
-    }
+// Функция для загрузки случайного изображения котика с Unsplash API
+function fetchRandomCatImage() {
+    fetch(`https://api.unsplash.com/photos/random?query=cats&client_id=${accessKey}`)
+        .then(response => response.json())
+        .then(data => {
+            const catImageUrl = data.urls.regular;
+            const img = document.createElement('img');
+            img.src = catImageUrl;
+            img.alt = "Котик";
+            randomCatContainer.innerHTML = '';
+            randomCatContainer.appendChild(img);
+        })
+        .catch(error => console.error('Ошибка загрузки изображения:', error));
 }
 
-// Вызываем функцию для генерации лапок в обеих секциях
-createPaws('cat-paws-cats'); // В секции "Cats for tap!"
-createPaws('cat-paws-collection'); // В секции "My collection"
+// Добавляем обработчик события на кнопку для показа случайного котика
+const randomCatButton = document.getElementById('random-cat-btn');
+randomCatButton.addEventListener('click', fetchRandomCatImage);
+
+// Функция для создания и добавления "лапок"
+function createPaw() {
+    const paw = document.createElement('div');
+    paw.className = 'cat-paw';
+
+    // Случайная позиция лапки
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight;
+
+    // Случайный угол поворота лапки от -45 до 45 градусов
+    const rotation = Math.random() * 360; // Поворот от 0 до 360 градусов
+
+    // Устанавливаем позиции и угол поворота лапки
+    paw.style.left = `${x}px`;
+    paw.style.top = `${y}px`;
+    paw.style.transform = `rotate(${rotation}deg)`; // Применение рандомного угла
+
+    pawsContainer.appendChild(paw);
+
+    // Удаляем лапку через 5 секунд
+    setTimeout(() => {
+        paw.remove();
+    }, 500); // Время исчезновения 500 мс
+}
+
+// Генерация лапок каждые несколько секунд
+setInterval(createPaw, 300); // Интервал 500 мс для появления новой лапки
+

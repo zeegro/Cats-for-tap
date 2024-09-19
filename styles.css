@@ -4,6 +4,27 @@ body {
     margin: 0;
     overflow-x: hidden;
     background-color: beige; /* Бежевый фон */
+    position: relative;
+}
+
+/* Скрываем скроллбар */
+body::-webkit-scrollbar {
+    width: 0;
+}
+
+html, body {
+    height: 100%; /* Высота страницы 100% */
+}
+
+/* Контейнер для лапок */
+#paws-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Лапки будут под контентом */
+    pointer-events: none; /* Лапки не будут мешать кликам по другим элементам */
 }
 
 /* Стили для закрепленной серой полоски в верхней части сайта */
@@ -32,7 +53,7 @@ body {
     border: none;
     color: #fff;
     font-size: 16px;
-    font-family: 'Montserrat', sans-serif; /* Используем Montserrat для текста */
+    font-family: 'Montserrat', sans-serif;
     cursor: pointer;
     outline: none;
     padding: 5px 10px;
@@ -40,34 +61,64 @@ body {
 }
 
 #nav-buttons button:hover {
-    background-color: #333; /* Темно-серый цвет при наведении */
+    background-color: #333;
 }
 
-/* Стили для секции "Cats for tap!" и "My collection" */
-.section {
-    background-color: beige; /* Бежевый цвет фона */
+/* Стили для секции "Cats for tap!" */
+#section-cats {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    position: relative;
+    text-align: center;
+    z-index: 1; /* Контент над лапками */
+}
+
+#random-cat-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #666;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#random-cat-btn:hover {
+    background-color: #333;
+}
+
+#random-cat-container img {
+    max-width: 50%;
+    margin-top: 20px;
+}
+
+/* Стили для секции "My collection" */
+#section-collection {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 24px;
     position: relative;
+    z-index: 1;
+    text-align: center;
 }
 
-/* Стили для скрытия скроллбара */
-body::-webkit-scrollbar {
-    width: 0px;
-}
-
-/* Стили для картинок лапок */
+/* Лапки */
 .cat-paw {
     position: absolute;
-    width: 60px; /* Увеличенный размер картинки лапки */
+    width: 60px;
     height: 60px;
-    background-image: url('image/paw.png'); /* Путь к вашей картинке лапки */
+    background-image: url('image/paw.png'); /* Путь к картинке лапки */
     background-size: cover;
-    animation: fadePaw 10s ease-in-out infinite; /* Анимация для плавного появления и исчезания */
-    opacity: 0; /* Начальная прозрачность лапок */
+    animation: fadePaw 1s ease-in-out infinite; /* Плавное появление */
+    opacity: 0; /* Начальная прозрачность */
+    transform-origin: center; /* Центр для поворота */
 }
 
 /* Анимация для плавного появления и исчезания лапок */
